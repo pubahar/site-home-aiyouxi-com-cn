@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://pubahar.github.io/site-home-aiyouxi-com-cn/sitemap.xml

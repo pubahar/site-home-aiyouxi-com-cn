@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>爱游戏 · 期刊式首页</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: linear-gradient(145deg, #fae2c0 0%, #fbd9b0 30%, #f3cf9e 70%, #f5c88f 100%);
+      min-height: 100vh;
+      padding: 2.5rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      line-height: 1.6;
+      color: #2f2b27;
+    }
+
+    .magazine-card {
+      max-width: 960px;
+      width: 100%;
+      background: #fefbf5;
+      border-radius: 3rem 3rem 2.5rem 2.5rem;
+      box-shadow: 0 20px 40px -10px rgba(110, 70, 30, 0.18), 0 8px 16px -6px rgba(0, 0, 0, 0.04);
+      padding: 2.8rem 2.8rem 3.2rem;
+      transition: box-shadow 0.2s;
+      backdrop-filter: blur(1px);
+    }
+
+    /* 首页横幅 hero */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      margin-bottom: 2.2rem;
+      border-bottom: 2px solid #f0ddc5;
+      padding-bottom: 1.8rem;
+    }
+
+    .hero-badge {
+      background: #de8f5f;
+      color: #fff7ee;
+      font-size: 0.76rem;
+      font-weight: 500;
+      letter-spacing: 0.4px;
+      padding: 0.35rem 1rem;
+      border-radius: 30px;
+      margin-bottom: 1rem;
+      display: inline-block;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: #3e2c1b;
+      margin-bottom: 0.5rem;
+      line-height: 1.15;
+    }
+
+    .hero p {
+      font-size: 1.08rem;
+      color: #64533e;
+      max-width: 75%;
+      background: rgba(240, 210, 175, 0.2);
+      padding: 0.6rem 1.2rem;
+      border-radius: 60px;
+      backdrop-filter: blur(2px);
+      margin-top: 0.2rem;
+    }
+
+    /* 三段自然介绍 */
+    .feature-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 2.2rem;
+      margin: 2.2rem 0 2.5rem;
+    }
+
+    .feature-item {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 1.2rem;
+      background: #fffcf7;
+      padding: 1.4rem 1.8rem 1.4rem 1.6rem;
+      border-radius: 28px;
+      box-shadow: 0 4px 8px rgba(190, 140, 90, 0.06);
+      border: 1px solid #efe2d3;
+    }
+
+    .feature-num {
+      flex-shrink: 0;
+      width: 2.6rem;
+      height: 2.6rem;
+      background: #f0d5b6;
+      border-radius: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      color: #553d27;
+      font-size: 1.15rem;
+    }
+
+    .feature-text h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #3b2b1b;
+      margin-bottom: 0.3rem;
+    }
+
+    .feature-text p {
+      font-size: 0.98rem;
+      color: #4f3f2e;
+    }
+
+    .feature-text a {
+      color: #b4652a;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px dotted #e1bc9a;
+      transition: border 0.2s, background 0.1s;
+      padding: 0 0.1rem;
+    }
+
+    .feature-text a:hover {
+      border-bottom: 2px solid #b4652a;
+      background: #faead8;
+      border-radius: 4px;
+    }
+
+    /* 背景说明 · 杂志侧记 */
+    .context-block {
+      background: #f8efe2;
+      border-radius: 30px;
+      padding: 1.8rem 2.2rem;
+      margin: 0.8rem 0 2.2rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.8rem 1.5rem;
+    }
+
+    .context-block .label {
+      background: #dbaa7c;
+      color: #2b1e10;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.2rem 1rem;
+      border-radius: 30px;
+      letter-spacing: 0.5px;
+    }
+
+    .context-block p {
+      flex: 1;
+      min-width: 200px;
+      font-size: 0.98rem;
+      color: #3f3222;
+    }
+
+    /* FAQ 摘要风格 */
+    .faq-mini {
+      margin: 1.8rem 0 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+
+    .faq-row {
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem 1rem;
+      flex-wrap: wrap;
+      padding: 0.6rem 1.2rem;
+      background: #fcf7f0;
+      border-radius: 40px;
+    }
+
+    .faq-q {
+      font-weight: 550;
+      color: #4f3821;
+      font-size: 0.95rem;
+      background: #eddcc9;
+      padding: 0.1rem 1rem;
+      border-radius: 30px;
+    }
+
+    .faq-a {
+      color: #4f3d2b;
+      font-size: 0.93rem;
+    }
+
+    /* 页尾访问提示 */
+    .footer-note {
+      margin-top: 2rem;
+      padding-top: 1.8rem;
+      border-top: 1px solid #e2d2be;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .footer-reminder {
+      background: #f8ede0;
+      border-radius: 60px;
+      padding: 1rem 1.8rem;
+      text-align: center;
+      font-size: 1.02rem;
+      color: #3e311f;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 0.2rem 0.6rem;
+    }
+
+    .footer-reminder a {
+      font-weight: 550;
+      color: #b4662c;
+      text-decoration: none;
+      border-bottom: 2px solid #ebc9ae;
+      padding: 0 0.15rem;
+      transition: background 0.15s;
+      background: transparent;
+    }
+
+    .footer-reminder a:hover {
+      background: #eddac4;
+      border-bottom-color: #b4662c;
+      border-radius: 6px;
+    }
+
+    .minor-links {
+      display: flex;
+      gap: 1.5rem 2.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      font-size: 0.88rem;
+      color: #806b53;
+    }
+
+    .minor-links span {
+      opacity: 0.7;
+    }
+
+    /* 响应式细节 */
+    @media (max-width: 640px) {
+      body {
+        padding: 1.2rem 0.8rem;
+      }
+      .magazine-card {
+        padding: 1.8rem 1.2rem 2.2rem;
+        border-radius: 2rem 2rem 1.8rem 1.8rem;
+      }
+      .hero h1 {
+        font-size: 2.1rem;
+      }
+      .hero p {
+        max-width: 100%;
+        font-size: 0.96rem;
+        padding: 0.5rem 1rem;
+      }
+      .feature-item {
+        flex-direction: column;
+        padding: 1rem 1.2rem;
+        gap: 0.6rem;
+      }
+      .feature-num {
+        width: 2.2rem;
+        height: 2.2rem;
+        font-size: 1rem;
+      }
+      .context-block {
+        padding: 1.2rem 1.2rem;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .footer-reminder {
+        font-size: 0.94rem;
+        padding: 0.8rem 1rem;
+      }
+      .faq-row {
+        padding: 0.5rem 0.9rem;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .hero h1 {
+        font-size: 1.7rem;
+      }
+      .feature-text h3 {
+        font-size: 1.05rem;
+      }
+      .magazine-card {
+        padding: 1.2rem 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="magazine-card">
+
+    <!-- 首页横幅 hero -->
+    <div class="hero">
+      <span class="hero-badge">✦ 期刊专题 · 持续关注</span>
+      <h1>再次见到，依然爱游戏</h1>
+      <p>一份为常回来看看的朋友准备的整理页</p>
+    </div>
+
+    <!-- 背景说明段（杂志侧记） -->
+    <div class="context-block">
+      <span class="label">背景</span>
+      <p>不知不觉间，<a href="https://site-home-aiyouxi.com.cn">爱游戏</a> 已经陪伴许多玩家度过闲暇与专注的时光。没有声嘶力竭的吆喝，只有一次次安静打开的默契。这个页面是为那些愿意把网站收藏在书签、隔段时间就回来翻翻的人写的——不求流量喧嚣，只希望每次到来都像翻开一本熟悉的杂志。</p>
+    </div>
+
+    <!-- 三段自然介绍 -->
+    <div class="feature-grid">
+      <div class="feature-item">
+        <div class="feature-num">01</div>
+        <div class="feature-text">
+          <h3>收藏 · 成为日常角落</h3>
+          <p>很多时候我们并不需要每天登录，但书签栏里总有一个位置留给它。把 <a href="https://site-home-aiyouxi.com.cn">爱游戏</a> 放进收藏夹，就像在书架上留了一本随时可以抽出来的刊物。不打扰，但一直在。</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-num">02</div>
+        <div class="feature-text">
+          <h3>再次访问 · 熟悉的节奏</h3>
+          <p>隔几周或几个月回来，界面不会陌生得让人不知所措。结构清晰、内容平实，你清楚在哪里能找到想了解的东西。这种稳定的体验，就是 <a href="https://site-home-aiyouxi.com.cn">爱游戏</a> 希望保持的调性——不追求花哨改版，更在意回头客的顺手。</p>
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-num">03</div>
+        <div class="feature-text">
+          <h3>持续关注 · 不赶潮流的陪伴</h3>
+          <p>没有强推的通知，也没有焦虑的倒计时。如果你愿意，可以隔段时间来随意看看；如果忙碌，几个月后再回来，入口依然安静地等着你。持续关注，不一定是每天刷新，而是心里知道有个地方始终开放。<a href="https://site-home-aiyouxi.com.cn">爱游戏</a> 就是这样一个角落。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ 摘要风格  -->
+    <div class="faq-mini">
+      <div class="faq-row">
+        <span class="faq-q">忘记网址了怎么办？</span>
+        <span class="faq-a">建议现在就把 <a href="https://site-home-aiyouxi.com.cn">爱游戏</a> 加入浏览器书签，或者记在备忘录里，下次直接点开就好。</span>
+      </div>
+      <div class="faq-row">
+        <span class="faq-q">内容会频繁变化吗？</span>
+        <span class="faq-a">不会。它更像一本季刊或特辑，保持稳定的同时慢慢沉淀，每次回来都有值得细看的地方。</span>
+      </div>
+      <div class="faq-row">
+        <span class="faq-q">我该从哪里开始？</span>
+        <span class="faq-a">直接打开 <a href="https://site-home-aiyouxi.com.cn">爱游戏</a>，就像翻开一本已经做好标记的杂志。熟悉的栏目、新的碎片，随你翻阅。</span>
+      </div>
+    </div>
+
+    <!-- 页尾访问提示 -->
+    <div class="footer-note">
+      <div class="footer-reminder">
+        <span>📌 随时回来 · 不必匆忙</span>
+        <span>—</span>
+        <span>收藏夹里的</span>
+        <a href="https://site-home-aiyouxi.com.cn">爱游戏</a>
+        <span>一直在这里</span>
+      </div>
+      <div class="minor-links">
+        <span>再次访问</span>
+        <span>·</span>
+        <span>收藏提示</span>
+        <span>·</span>
+        <span>持续关注</span>
+        <span>·</span>
+        <span>杂志风格</span>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
