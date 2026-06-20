@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>威廉希尔 · 简明指南与访问提醒</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: #f2f2f2;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.7;
+            color: #2c2c2c;
+            padding: 2rem 1rem;
+        }
+        .wrapper {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* hero */
+        .hero {
+            background: #ffffff;
+            border-radius: 28px;
+            padding: 3rem 2.5rem 2.5rem;
+            margin-bottom: 2.8rem;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.04);
+            border: 1px solid #e6e6e6;
+        }
+        .hero h1 {
+            font-size: 2.4rem;
+            font-weight: 400;
+            letter-spacing: -0.01em;
+            color: #1a1a1a;
+            margin-bottom: 0.8rem;
+        }
+        .hero .sub {
+            font-size: 1.1rem;
+            color: #6b6b6b;
+            border-left: 3px solid #b5b5b5;
+            padding-left: 1.2rem;
+            margin: 1.2rem 0 0.4rem;
+        }
+        .hero .meta-line {
+            font-size: 0.9rem;
+            color: #929292;
+            margin-top: 1.8rem;
+            border-top: 1px solid #eaeaea;
+            padding-top: 1.2rem;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        /* 背景卡片 */
+        .bg-card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 2rem 2.2rem;
+            margin-bottom: 2.4rem;
+            border: 1px solid #e0e0e0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+        }
+        .bg-card h2 {
+            font-weight: 420;
+            font-size: 1.6rem;
+            color: #1f1f1f;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.01em;
+        }
+        .bg-card p {
+            margin-bottom: 1.2rem;
+        }
+        .bg-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* 三栏卡片 (三段自然介绍) */
+        .grid-three {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.6rem;
+            margin-bottom: 2.6rem;
+        }
+        .col-card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1.8rem 1.6rem;
+            border: 1px solid #e3e3e3;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+            transition: box-shadow 0.2s;
+        }
+        .col-card:hover {
+            box-shadow: 0 8px 18px rgba(0,0,0,0.04);
+        }
+        .col-card h3 {
+            font-weight: 420;
+            font-size: 1.25rem;
+            color: #1f1f1f;
+            margin-bottom: 0.9rem;
+            padding-bottom: 0.4rem;
+            border-bottom: 1px solid #efefef;
+        }
+        .col-card p {
+            font-size: 0.98rem;
+            color: #3a3a3a;
+        }
+
+        /* 提示与FAQ摘要区 */
+        .tip-faq {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 2rem 2.2rem;
+            margin-bottom: 2.6rem;
+            border: 1px solid #e0e0e0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2.2rem;
+        }
+        .tip-faq .left {
+            flex: 1 1 45%;
+        }
+        .tip-faq .right {
+            flex: 1 1 45%;
+        }
+        .tip-faq h3 {
+            font-weight: 420;
+            font-size: 1.2rem;
+            color: #1f1f1f;
+            margin-bottom: 0.8rem;
+        }
+        .tip-faq ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .tip-faq li {
+            margin-bottom: 0.6rem;
+            font-size: 0.95rem;
+            color: #3d3d3d;
+            padding-left: 1.2rem;
+            position: relative;
+        }
+        .tip-faq li::before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            color: #b0b0b0;
+        }
+        .tip-faq p {
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* 页尾访问提示 */
+        .footer-visit {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 2rem 2.4rem;
+            border: 1px solid #dbdbdb;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+            text-align: center;
+        }
+        .footer-visit p {
+            font-size: 1rem;
+            color: #3a3a3a;
+            margin-bottom: 0.5rem;
+        }
+        .footer-visit .note {
+            font-size: 0.9rem;
+            color: #8a8a8a;
+            margin-top: 1rem;
+        }
+        .footer-visit a {
+            color: #3c3c3c;
+            text-decoration: none;
+            border-bottom: 1px solid #c0c0c0;
+            font-weight: 430;
+        }
+        .footer-visit a:hover {
+            border-bottom-color: #7a7a7a;
+        }
+
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 2rem 1.5rem;
+            }
+            .hero h1 {
+                font-size: 1.9rem;
+            }
+            .grid-three {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+            .tip-faq {
+                flex-direction: column;
+                gap: 1.5rem;
+                padding: 1.8rem 1.5rem;
+            }
+            .footer-visit {
+                padding: 1.6rem 1.2rem;
+            }
+            .bg-card {
+                padding: 1.6rem 1.4rem;
+            }
+        }
+        @media (max-width: 480px) {
+            body {
+                padding: 1rem 0.8rem;
+            }
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+            .hero .meta-line {
+                flex-direction: column;
+                gap: 0.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+
+    <!-- 首页横幅 hero -->
+    <div class="hero">
+        <h1>威廉希尔 · 简明指南</h1>
+        <div class="sub">一份关于平台背景与访问方式的温和说明</div>
+        <p style="margin-top:1.2rem; color:#4b4b4b;">
+            从认识界面到留意浏览细节，我们整理了几点务实的观察，供新读者参考。
+        </p>
+        <div class="meta-line">
+            <span>阅读时长约 4 分钟</span>
+            <span>方向 · 背景与提醒</span>
+        </div>
+    </div>
+
+    <!-- 背景说明 -->
+    <div class="bg-card">
+        <h2>背景：一个面向体育与娱乐的界面</h2>
+        <p>
+            <strong>威廉希尔</strong> 这一名称在体育赛事与数字娱乐领域被广泛知晓。其线上平台提供了多种信息分类方式，涵盖赛事数据、实时资讯以及交互式模块。对于初次接触的用户，平台结构相对清晰，但也需要一定时间来熟悉各个功能区块的分布逻辑。
+        </p>
+        <p>
+            与许多同类服务相似，该平台强调内容更新速度与信息密度。在浏览过程中，建议保持网络环境稳定，并留意页面左侧或顶部的导航入口，这有助于快速定位目标栏目。
+        </p>
+    </div>
+
+    <!-- 三段自然介绍 (卡片网格) -->
+    <div class="grid-three">
+        <div class="col-card">
+            <h3>信息呈现方式</h3>
+            <p>
+                赛事列表与实时数据采用卡片式布局，关键数据如比分、赔率变动均在显眼位置展示。用户可通过筛选器按日期或赛事类型排序，整体逻辑接近主流体育数据平台，学习成本较低。
+            </p>
+        </div>
+        <div class="col-card">
+            <h3>账户与浏览准备</h3>
+            <p>
+                在正式浏览前，建议确认账户处于正常状态，并了解平台关于地区可用性的条款。部分功能可能需要登录后可见，因此提前完成注册或验证步骤会更为便利。
+            </p>
+        </div>
+        <div class="col-card">
+            <h3>常见交互细节</h3>
+            <p>
+                页面中许多数值区域支持点击展开更多详情，例如过往对阵记录或走势图。鼠标悬停或轻触时通常会有颜色变化反馈，这一设计有助于引导用户发现深层信息。
+            </p>
+        </div>
+    </div>
+
+    <!-- 提示与FAQ摘要 -->
+    <div class="tip-faq">
+        <div class="left">
+            <h3>访问提醒</h3>
+            <ul>
+                <li>建议使用主流浏览器，并保持版本更新，以获得较稳定的界面渲染。</li>
+                <li>部分页面加载时涉及外部数据请求，网络波动可能导致短暂延迟。</li>
+                <li>若遇到页面布局异常，可尝试清除缓存或使用无痕模式重新加载。</li>
+            </ul>
+        </div>
+        <div class="right">
+            <h3>常见疑问摘要</h3>
+            <p><strong>是否需要下载额外软件？</strong> 平台基于网页构建，无需安装专用客户端。</p>
+            <p><strong>数据更新频率如何？</strong> 赛事数据通常以秒级或分钟级更新，具体视赛事类型而定。</p>
+            <p><strong>是否提供多语言界面？</strong> 界面语言选项可在账户设置或页面底部切换。</p>
+        </div>
+    </div>
+
+    <!-- 页尾访问提示 (自然嵌入链接) -->
+    <div class="footer-visit">
+        <p>
+            若希望进一步探索该平台，可直接访问 <a href="https://official--williamhill.com">威廉希尔</a>。浏览时请留意地区访问限制与平台使用条款，合理规划查阅时间。
+        </p>
+        <p class="note">
+            本文档仅作介绍用途，不构成任何操作建议。
+        </p>
+    </div>
+
+</div>
+</body>
+</html>
