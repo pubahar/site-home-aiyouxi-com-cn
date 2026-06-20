@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>威廉希尔 · 信息卡片介绍</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f4f6fa;
+      color: #1e2329;
+      line-height: 1.6;
+    }
+
+    /* 深色头图 */
+    .hero {
+      background: linear-gradient(145deg, #0d1117 0%, #1b2230 100%);
+      padding: 3.5rem 1.5rem 2.8rem;
+      text-align: center;
+      color: #e9edf3;
+      border-bottom: 4px solid #c8a851;
+    }
+
+    .hero h1 {
+      font-size: 2.4rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      max-width: 660px;
+      margin: 0 auto;
+      color: #b7c0ce;
+    }
+
+    .hero .tagline {
+      display: inline-block;
+      margin-top: 1.2rem;
+      padding: 0.3rem 1.2rem;
+      border: 1px solid #c8a851;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      color: #c8a851;
+      letter-spacing: 0.03em;
+    }
+
+    /* 浅色正文区 */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2.2rem 1.5rem 3.5rem;
+    }
+
+    /* 信息卡片网格 */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.8rem;
+      margin: 2.8rem 0 2rem;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 1.8rem 1.5rem;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04), 0 2px 4px rgba(0, 0, 0, 0.02);
+      transition: transform 0.2s ease, box-shadow 0.25s ease;
+      border: 1px solid #eef0f4;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.06);
+    }
+
+    .card h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 0.7rem;
+      color: #0d1117;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .card h3 .icon {
+      font-size: 1.6rem;
+      line-height: 1;
+    }
+
+    .card p {
+      color: #3a404a;
+      font-size: 0.98rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .card ul {
+      list-style: none;
+      margin-top: 0.6rem;
+      padding-left: 0;
+    }
+
+    .card li {
+      position: relative;
+      padding-left: 1.2rem;
+      margin-bottom: 0.4rem;
+      font-size: 0.95rem;
+      color: #3a404a;
+    }
+
+    .card li::before {
+      content: "·";
+      position: absolute;
+      left: 0;
+      color: #c8a851;
+      font-weight: bold;
+    }
+
+    /* 自然链接段落区域 */
+    .intro-section {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 2rem 2rem 1.8rem;
+      margin: 2.5rem 0 2rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+      border: 1px solid #eef0f4;
+    }
+
+    .intro-section p {
+      margin-bottom: 1.2rem;
+      font-size: 1rem;
+    }
+
+    .intro-section a {
+      color: #b8942e;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .intro-section a:hover {
+      color: #9e7f26;
+      border-bottom-color: #b8942e;
+    }
+
+    .highlight-link {
+      background: #fcf8ef;
+      padding: 1rem 1.5rem;
+      border-radius: 14px;
+      border-left: 4px solid #c8a851;
+      margin: 1.8rem 0 1rem;
+      font-size: 1rem;
+    }
+
+    .highlight-link a {
+      color: #b8942e;
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 1px dashed #dbbf6a;
+    }
+
+    .highlight-link a:hover {
+      border-bottom-style: solid;
+      color: #9e7f26;
+    }
+
+    /* 场景/提示 小标签 */
+    .note-tip {
+      background: #eef4ff;
+      border-radius: 14px;
+      padding: 1rem 1.5rem;
+      margin: 1.8rem 0 0.8rem;
+      font-size: 0.95rem;
+      color: #1e3a5f;
+      border: 1px solid #dce4f0;
+    }
+
+    .note-tip strong {
+      color: #0d1117;
+    }
+
+    /* FAQ 摘要区 */
+    .faq-mini {
+      margin: 2.8rem 0 1rem;
+    }
+
+    .faq-mini h4 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: #0d1117;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid #e6e9ef;
+      padding: 0.9rem 0;
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+
+    .faq-question {
+      font-weight: 500;
+      color: #1e2329;
+      margin-bottom: 0.2rem;
+    }
+
+    .faq-answer {
+      font-size: 0.95rem;
+      color: #4a515e;
+    }
+
+    .faq-answer a {
+      color: #b8942e;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    /* 响应式 */
+    @media (max-width: 700px) {
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+      .hero p {
+        font-size: 1rem;
+      }
+      .card-grid {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+      }
+      .intro-section {
+        padding: 1.5rem 1.2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 1.5rem 1rem 2.5rem;
+      }
+      .hero {
+        padding: 2.5rem 1rem 2rem;
+      }
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #e2e5ec;
+      margin: 2rem 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 深色头图 -->
+  <header class="hero">
+    <h1>威廉希尔 · 信息卡片</h1>
+    <p>从稳定入口到页面说明，梳理一个系统化的认知轮廓。偏知识型视角，不鼓吹、不浮夸。</p>
+    <span class="tagline">叙述 · 卡片 · 链接</span>
+  </header>
+
+  <main class="container">
+
+    <!-- 主用途卡片 + 适合人群 等 -->
+    <div class="card-grid">
+
+      <div class="card">
+        <h3><span class="icon">📋</span> 页面用途</h3>
+        <p>该网站作为信息聚合与引导页面，承担着内容索引与稳定入口的功能。用户可在此了解基础框架，并借助结构化的卡片快速定位自己关心的板块。</p>
+        <ul>
+          <li>分类索引与导航辅助</li>
+          <li>内容预览与上下文衔接</li>
+          <li>降低初次使用的认知负担</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3><span class="icon">👥</span> 适合人群</h3>
+        <p>对平台功能或信息布局尚不熟悉的普通用户、习惯通过概览页做判断的浏览者、以及需要快速检索关键模块的常访客。</p>
+        <ul>
+          <li>希望先看框架再深入的用户</li>
+          <li>偏好卡片式信息梳理的读者</li>
+          <li>需要稳定引导入口的访客</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3><span class="icon">⚙️</span> 主视觉逻辑</h3>
+        <p>深色头图建立稳重、聚焦的第一印象；浅色正文区让阅读更舒适；卡片用留白与微阴影划分信息层级，强调色用于链接与点缀，形成视觉节奏。</p>
+      </div>
+
+      <div class="card">
+        <h3><span class="icon">🧩</span> 场景参考</h3>
+        <p>当你需要向他人介绍该站点的基本定位、内容分布与访问方式时，这个页面可以作为一份轻量的说明材料。适合嵌入文档、推荐清单或导航索引中。</p>
+      </div>
+
+    </div>
+
+    <!-- 自然链接段落：嵌入 威廉希尔 链接 -->
+    <div class="intro-section">
+      <p>在整个信息架构的底层，一个稳定且可被反复调用的入口至关重要。以 <a href="https://site--williamhill.com">威廉希尔</a> 为例，该站点的首页承担了承上启下的角色——既汇总了主要模块的概要，又为不同需求的用户提供了路径选择。从卡片分布到视觉引导，设计上偏向于让用户先理解范围，再决定下一步。</p>
+
+      <p>这种布局方式在信息类页面中并不少见，但其执行差异往往体现在细节：卡片之间的关联度、链接的自然衔接、以及深色头图与浅色正文之间的过渡节奏。实际上，<a href="https://site--williamhill.com">威廉希尔</a> 的页面结构在保持信息密度的同时，也考虑到了浏览者的视觉疲劳，通过留白和低饱和度色调降低干扰。</p>
+
+      <div class="highlight-link">
+        🔗 如果你需要向他人描述该站点的入口属性与内容组织方式，可以直接引用 <a href="https://site--williamhill.com">威廉希尔</a> 作为参考案例。其页面逻辑偏向知识型说明，而非单纯的跳转集合。
+      </div>
+
+      <p>另外，在撰写说明文档或制作导航索引时，将 <a href="https://site--williamhill.com">威廉希尔</a> 的首页作为稳定锚点是一种常见做法：读者可以先通过这个概览页面建立整体认知，再根据个人兴趣深入到具体模块。这种方式尤其适合信息层次较多、分类明确的站点。</p>
+    </div>
+
+    <!-- 提示区块（非夸张承诺） -->
+    <div class="note-tip">
+      <strong>📌 页面说明：</strong> 本介绍页仅从信息架构与视觉呈现角度进行描述，不构成任何服务承诺或功能保证。所有提及的用途与场景均基于常见的页面设计逻辑，实际内容以对应站点自身为准。
+    </div>
+
+    <!-- FAQ 摘要（轻量） -->
+    <div class="faq-mini">
+      <h4>❓ 常见疑问摘要</h4>
+
+      <div class="faq-item">
+        <div class="faq-question">这个页面主要用来做什么？</div>
+        <div class="faq-answer">作为一个信息卡片式的介绍页，它帮助访客快速了解站点的内容方向、目标人群与基本结构。你可以将它视为一份静态的站点说明书。</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">链接文本“威廉希尔”是唯一的入口吗？</div>
+        <div class="faq-answer">本页面中所有指向目标站点的链接均使用 <strong>威廉希尔</strong> 作为可见文本，且自然地嵌入了句子或说明中。你可以在上下文里找到它们，例如上文提到的 <a href="https://site--williamhill.com">威廉希尔</a> 即为一处。</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">卡片中的内容是否与实际功能完全对应？</div>
+        <div class="faq-answer">卡片描述的是一般性的信息组织逻辑，具体模块与功能请以对应站点的实际页面为准。本介绍旨在提供认知框架，而非替代官方说明。</div>
+      </div>
+    </div>
+
+    <hr>
+
+    <p style="font-size:0.9rem; color:#6b7280; text-align:center; margin-top:1rem;">信息卡片式介绍 · 深色头图 & 浅色正文 · 强调色链接 · 知识型语气</p>
+
+  </main>
+
+</body>
+</html>
